@@ -10,7 +10,8 @@ class CreateTasks < ActiveRecord::Migration[5.0]
       t.boolean :allDay
       t.boolean :completed
       t.integer :order
-      t.references :user, foreign_key: true
+      t.integer :user_id
+      t.references :categories, foreign_key: true
 
       t.timestamps
     end

@@ -13,8 +13,8 @@ class TasksController < ApplicationController
     render json: @task
   end
 
-  # GET /find_tasks/username=?
-  def find_tasks
+  # GET /find_user_tasks/user_id=?
+  def find_user_tasks
     @tasks = Task.where(user_id: params[:user_id])
     render json: @tasks
   end
