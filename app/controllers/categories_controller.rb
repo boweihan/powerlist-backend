@@ -13,10 +13,22 @@ class CategoriesController < ApplicationController
     render json: @category
   end
 
+  # GET /find_category?name=?
+  def find_category
+    @category = Category.where(name: params[:name]).first
+    render json: @category
+  end
+
   # GET /get_category_tasks?id
   def get_category_tasks
     @tasks = Category.where(id: params[:id]).tasks
     render json: @tasks
+  end
+
+  # GET /find_user_categories/user_id=?
+  def find_user_categories
+    @categories = Category.where(users_id: params[:user_id])
+    render json: @categories
   end
 
   # POST /categories
@@ -52,6 +64,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def category_params
-      params.require(:category).permit(:name, :user, :user_id)
+      params.require(:category).permit(:name, :users_id)
     end
 end

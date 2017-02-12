@@ -15,8 +15,8 @@ class UsersController < ApplicationController
 
   # GET /find_user/username=?
   def find_user
-    @users = User.where(username: params[:username]).first
-    render json: @users
+    @user = User.where(username: params[:username]).first
+    render json: @user
   end
 
   # POST /users
