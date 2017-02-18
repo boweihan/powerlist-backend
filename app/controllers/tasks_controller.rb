@@ -19,6 +19,12 @@ class TasksController < ApplicationController
     render json: @tasks
   end
 
+  # GET /get_category_tasks/category_id=?
+  def get_category_tasks
+    @tasks = Task.where(category_id: params[:category_id])
+    render json: @tasks
+  end
+
   # POST /tasks
   def create
     @task = Task.new(task_params)

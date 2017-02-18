@@ -20,6 +20,7 @@ class CategoriesController < ApplicationController
   end
 
   # GET /get_category_tasks?id
+  # WORTHLESS METHOD RIGHT NOW
   def get_category_tasks
     @tasks = Category.where(id: params[:id]).first
     render json: @tasks
