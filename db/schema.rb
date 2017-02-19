@@ -25,16 +25,18 @@ ActiveRecord::Schema.define(version: 20170212205633) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "title"
-    t.string   "start"
-    t.string   "end"
+    t.string   "tip"
+    t.datetime "start"
+    t.datetime "end"
     t.string   "url"
     t.string   "category"
-    t.boolean  "completed"
+    t.boolean  "overdue"
+    t.string   "backgroundColor"
     t.integer  "order"
     t.integer  "user_id"
     t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["category_id"], name: "index_tasks_on_category_id", using: :btree
   end
 

@@ -15,13 +15,13 @@ class TasksController < ApplicationController
 
   # GET /find_user_tasks/user_id=?
   def find_user_tasks
-    @tasks = Task.where(user_id: params[:user_id])
+    @tasks = Task.order(end: :asc).where(user_id: params[:user_id])
     render json: @tasks
   end
 
   # GET /get_category_tasks/category_id=?
   def get_category_tasks
-    @tasks = Task.where(category_id: params[:category_id])
+    @tasks = Task.order(end: :asc).where(category_id: params[:category_id])
     render json: @tasks
   end
 
@@ -58,6 +58,6 @@ class TasksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def task_params
-      params.require(:task).permit(:title, :start, :end, :url, :category, :completed, :order, :user_id, :category_id)
+      params.require(:task).permit(:title, :tip, :start, :end, :url, :category, :overdue, :backgroundColor, :order, :user_id, :category_id)
     end
 end
